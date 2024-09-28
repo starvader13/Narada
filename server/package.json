@@ -4,9 +4,10 @@
   "description": "A notification service for github repositories",
   "main": "src/index.ts",
   "scripts": {
-    "npm build": "tsc -b",
-    "npm run dev": "tsc -b && nodemon dist/index.js",
-    "npm server": "node sist/index.js"
+    "build": "tsc -b",
+    "dev": "tsc -b && nodemon dist/index.js",
+    "server": "node sist/index.js",
+    "clean build": "rm -rf dist && tsc -b"
   },
   "repository": {
     "type": "git",
