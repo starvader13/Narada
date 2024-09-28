@@ -9,6 +9,23 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_SESSION")
+}
+
+model User {
+  id       Int     @default(autoincrement())
+  user_id  String  @id
+  name     String
+  email    String  @unique
+  password String
+  archived Boolean @default(false)
+}
+
+model Respository {
+  id       Int     @id @default(autoincrement())
+  user_id  String
+  repo_url String
+  archived Boolean @default(false)
 }
