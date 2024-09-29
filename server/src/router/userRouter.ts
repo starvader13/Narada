@@ -11,7 +11,7 @@ const router = Router();
 
 router.post(
   "/signup",
-  isSignInInputValidated,
+  isSignUpInputValidated,
   doesUserNotExist,
   async (req: Request, res: Response) => {
     const requestBody = req.body;
@@ -35,7 +35,7 @@ router.post(
 
 router.post(
   "/signin",
-  isSignUpInputValidated,
+  isSignInInputValidated,
   doesUserExist,
   async (req: Request, res: Response) => {
     const requestBody = req.body;

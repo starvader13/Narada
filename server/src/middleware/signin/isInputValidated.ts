@@ -2,20 +2,17 @@ import { NextFunction, Request, Response } from "express";
 import zod from "zod";
 import StatusCodes from "../../enums/StatusCodes";
 
-const inputValidationShema = zod.object({
-  name: zod.string().max(50),
-  email: zod.string().email(),
-  password: zod.string().min(6),
-});
+const inputValidationSchema = zod
+  .object({
+    email: zod.string().email(),
+    password: zod.string().min(6),
+  })
+  .strict();
 
-const isInputValidated = (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-): void => {
+const isInputValidated = (req: Request, res: Response, next: NextFunction) => {
   const requestBody = req.body;
 
-  const zodResponse = inputValidationShema.safeParse(requestBody);
+  const zodResponse = inputValidationSchema.safeParse(requestBody);
 
   if (!zodResponse.success) {
     res.status(StatusCodes.UNPROCESSABLE_ENTITY).json({
