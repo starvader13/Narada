@@ -14,7 +14,7 @@ const isInputValidated = (req: Request, res: Response, next: NextFunction) => {
   const zodResponse = inputValidationShema.safeParse(requestBody);
 
   if (!zodResponse.success) {
-    res.status(StatusCodes.UNPROCESSABLE_ENTITY).json({
+    return res.status(StatusCodes.UNPROCESSABLE_ENTITY).json({
       msg: "Input is not in the correct format",
       error: zodResponse.error.issues[0].message,
     });
