@@ -11,10 +11,11 @@ const doesUserExists = async (
   const email: string = req.body.email;
   const user: User | null = await findUser(email);
 
-  if (user == null) {
-    return res.status(StatusCodes.CONFLICT).json({
-      msg: "The email is already registered. Please Sign-Up",
+  if (user != null) {
+    res.status(StatusCodes.CONFLICT).json({
+      msg: "The email is already registered. Please Sign-In",
     });
+    return;
   }
 
   return next();
