@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
 import StatusCodes from "../enums/StatusCodes";
-import doesUserExists from "../middleware/signin/doesUserExists";
+import doesUserNotExist from "../middleware/signin/doesUserNotExist";
 import isInputValidated from "../middleware/signin/isInputValidated";
 import createUser from "../utils/createUser";
 
@@ -9,7 +9,7 @@ const router = Router();
 router.post(
   "/signup",
   isInputValidated,
-  doesUserExists,
+  doesUserNotExist,
   async (req: Request, res: Response) => {
     const responseBody = req.body;
 

@@ -3,7 +3,7 @@ import User from "../../interface/User";
 import findUser from "../../utils/findUser";
 import StatusCodes from "../../enums/StatusCodes";
 
-const doesUserExists = async (
+const doesUserNotExist = async (
   req: Request,
   res: Response,
   next: NextFunction,
@@ -21,4 +21,4 @@ const doesUserExists = async (
   return next();
 };
 
-export default doesUserExists;
+export default doesUserNotExist;
