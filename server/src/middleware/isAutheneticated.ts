@@ -9,7 +9,7 @@ dotenv.config();
 declare global {
   namespace Express {
     interface Request {
-      user?: User;
+      user: User;
     }
   }
 }
@@ -42,6 +42,7 @@ const isAuthenticated = async (
 
     if (typeof jwtResponse === "string") {
       throw new Error("Failed to verify error");
+      return;
     }
 
     const user: User | null = await findUser(jwtResponse.email);

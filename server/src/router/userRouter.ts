@@ -21,7 +21,7 @@ router.post(
       requestBody.email,
       requestBody.password,
     ).catch(() => {
-      res.status(StatusCodes.BAD_REQUEST).json({
+      return res.status(StatusCodes.BAD_REQUEST).json({
         msg: "Failed to create a user. Internal Database Issue",
         error: "User creation failed",
       });

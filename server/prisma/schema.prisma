@@ -27,6 +27,6 @@ model Respository {
   id           Int     @id @default(autoincrement())
   user_id      String
   repo_url     String
-  total_issues Int?
+  total_issues Int     @default(0)
   archived     Boolean @default(false)
 }
