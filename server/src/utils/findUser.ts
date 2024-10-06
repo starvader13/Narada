@@ -1,7 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../client/prismaClient";
 import User from "../interface/User";
-
-const prisma = new PrismaClient();
 
 const findUser = async (email: string): Promise<User | null> => {
   try {
@@ -11,7 +9,6 @@ const findUser = async (email: string): Promise<User | null> => {
         archived: false,
       },
     });
-    await prisma.$disconnect();
     return user ? (user as User) : null;
   } catch (err: any) {
     console.log(err.message);

@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "../client/prismaClient";
 
 const createUser = async (name: string, email: string, password: string) => {
   try {
@@ -12,7 +10,6 @@ const createUser = async (name: string, email: string, password: string) => {
         password: password,
       },
     });
-    await prisma.$disconnect();
   } catch (err) {
     console.error(err);
     throw new Error("Required");

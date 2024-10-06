@@ -1,9 +1,9 @@
 import { Request, Response, Router } from "express";
 import StatusCodes from "../enums/StatusCodes";
-import doesUserNotExist from "../middleware/signin/doesUserNotExist";
+import doesUserExist from "../middleware/signin/doesUserExist";
 import isSignInInputValidated from "../middleware/signin/isInputValidated";
 import createUser from "../utils/createUser";
-import doesUserExist from "../middleware/signup/doesUserExist";
+import doesUserNotExist from "../middleware/signup/doesUserNotExist";
 import isSignUpInputValidated from "../middleware/signup/isInputValidated";
 import generateBearerToken from "../utils/generateBearerToken";
 

@@ -5,3 +5,5 @@ interface Repository {
   total_issues: number;
   archived: boolean;
 }
+
+export default Repository;
