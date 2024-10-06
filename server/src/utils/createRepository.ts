@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "../client/prismaClient";
 
 const createRepository = async (url: string, user_id: string) => {
   try {

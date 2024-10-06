@@ -1,17 +1,17 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../client/prismaClient";
 import User from "../interface/User";
 
-const prisma = new PrismaClient();
-
 const findUser = async (email: string): Promise<User | null> => {
-  const user = await prisma.user.findFirst({
-    where: {
-      email: email,
-    },
-  });
+  try {
+    const user = await prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+    });
 
-  if (user != null) {
-    return <User>user;
+    return user ? (user as User) : null;
+  } catch (err) {
+    console.error(err);
   }
 
   return null;

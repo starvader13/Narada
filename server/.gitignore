@@ -1,14 +1,14 @@
-// Enviroment Variables
+# Enviroment Variables
 .env
 
-// Node Modules
+# Node Modules
 node_modules
 
-// IDE Settings
+# IDE Settings
 .vscode
 
-// Build
+# Build
 dist/
 
-// Typescript
+# Typescript
 tsconfig.tsbuildinfo

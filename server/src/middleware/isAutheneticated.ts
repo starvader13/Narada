@@ -1,7 +1,7 @@
-import { Request, Response, NextFunction } from "express";
-import StatusCodes from "../enums/StatusCodes";
-import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { NextFunction, Request, Response } from "express";
+import jwt from "jsonwebtoken";
+import StatusCodes from "../enums/StatusCodes";
 import User from "../interface/User";
 import findUser from "../utils/findUser";
 dotenv.config();
@@ -41,8 +41,7 @@ const isAuthenticated = async (
     const jwtResponse = jwt.verify(signature, SECRET_KEY);
 
     if (typeof jwtResponse === "string") {
-      throw new Error("Failed to verify error");
-      return;
+      throw new Error("Failed to verify jwt");
     }
 
     const user: User | null = await findUser(jwtResponse.email);
@@ -60,14 +59,14 @@ const isAuthenticated = async (
   } catch (err) {
     res.status(StatusCodes.UNAUTHORIZED).json({
       msg: "Unauthorized Request",
-      error: "Requeired a valid jwt token",
+      error: "Required a valid jwt token",
     });
     return;
   }
 };
 
 const tokenToSignature = (token: string) => {
-  return token.split(" ")[0];
+  return token.split(" ")[1];
 };
 
 export default isAuthenticated;
