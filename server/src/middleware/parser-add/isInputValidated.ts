@@ -4,7 +4,7 @@ import StatusCodes from "../../enums/StatusCodes";
 
 const inputValidationSchema = zod
   .object({
-    url: zod.string().url(),
+    url: zod.string().url().includes("github.com/"),
   })
   .strict();
 

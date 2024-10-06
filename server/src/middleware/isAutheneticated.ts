@@ -3,7 +3,7 @@ import StatusCodes from "../enums/StatusCodes";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import User from "../interface/User";
-import findUser from "../utils/findUser";]
+import findUser from "../utils/findUser";
 dotenv.config();
 
 declare global {
